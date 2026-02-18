@@ -3,12 +3,12 @@
 import { useChat } from '@ai-sdk/react';
 import { useState } from 'react';
 
-import { Weather } from '../../components/weather';
+import { Weather, WeatherProps } from '../../components/weather';
 import { ResponseRenderer } from '../../components/ResponseRenderer';
 
 export default function Page() {
   const [input, setInput] = useState('');
-  const { messages, sendMessage, isLoading } = useChat();
+  const { messages, sendMessage} = useChat();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -79,7 +79,7 @@ export default function Page() {
                       }
                       return (
                         <div key={index} className="mt-2">
-                          <Weather {...part.output} />
+                          <Weather {...part.output as WeatherProps} />
                         </div>
                       );
 
@@ -182,15 +182,43 @@ export default function Page() {
                   }
                 }
 
+                if (part.type === 'tool-generatePowerLossSimulator') {
+                  switch (part.state) {
+                    case 'input-available':
+                      return (
+                        <div key={index} className="text-xs text-neutral-400">
+                          Generating summary card...
+                        </div>
+                      );
+
+                    case 'output-available':
+                      return (
+                        <div key={index} className="mt-2">
+                          <ResponseRenderer toolResult={part.output} />
+                        </div>
+                      );
+
+                    case 'output-error':
+                      return (
+                        <div key={index} className="text-red-400">
+                          Card error: {part.errorText}
+                        </div>
+                      );
+
+                    default:
+                      return null;
+                  }
+                }
+
                 return null;
               })}
             </div>
           </div>
         ))}
 
-        {isLoading && (
+        {/* {isLoading && (
           <div className="text-sm text-neutral-500">AI is typing...</div>
-        )}
+        )} */}
       </main>
 
       <form
@@ -205,7 +233,6 @@ export default function Page() {
         />
         <button
           type="submit"
-          disabled={isLoading}
           className="rounded-xl bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 disabled:opacity-50"
         >
           Send

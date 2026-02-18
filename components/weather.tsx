@@ -1,7 +1,8 @@
-import { IfxButton, IfxCard, IfxCardHeadline, IfxCardImage, IfxCardLinks,} from '@infineon/infineon-design-system-react';
+import { IfxButton, IfxCard, IfxCardHeadline, IfxCardImage, IfxCardLinks,IfxCardOverline} from '@infineon/infineon-design-system-react';
+import sunny from '../public/sunny.jpg';
+import Image from 'next/image';
 
-
-type WeatherProps = {
+export type WeatherProps = {
   temperature: number;
   weather: string;
   location: string;
@@ -24,17 +25,22 @@ export const Weather = ({ temperature, weather, location }: WeatherProps) => {
 
 
   return (
-    <div>
+    <div className='bg-blue-400'>
       <IfxCard direction="vertical" href="" target="_blank" aria-label="Card">
-        <IfxCardImage slot="img" position="" src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Latte_and_dark_coffee.jpg" alt="Coffee"></IfxCardImage>
-            {weather} in {location}
-          <IfxCardHeadline>
-            {temperature}°C {icon}
+        <div className='items-center my-auto'>
+          <div className='flex flex-col w-full items-center justify-center mb-4'>
+              <Image className='rounded-full' src={sunny} alt="Sunny Weather" width={200} height={200} />
+          </div>
+          {/* <span></span> */}
+          <div className='flex flex-col items-center justify-center text-center'>
+            <IfxCardOverline>
+              {weather} in {location}
+            </IfxCardOverline>
+            <IfxCardHeadline>
+                {temperature}°C {icon}
             </IfxCardHeadline>
-          <IfxCardLinks slot="buttons">
-              <IfxButton variant="primary">Button</IfxButton>
-              <IfxButton variant="secondary">Button</IfxButton>
-          </IfxCardLinks>
+          </div>
+        </div>
       </IfxCard>
     </div>
   );
