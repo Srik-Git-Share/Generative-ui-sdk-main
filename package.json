@@ -11,6 +11,7 @@
   "dependencies": {
     "@ai-sdk/groq": "^3.0.21",
     "@ai-sdk/react": "^3.0.70",
+    "@infineon/infineon-design-system-react": "^39.11.0",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",

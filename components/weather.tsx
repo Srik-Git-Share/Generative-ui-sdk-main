@@ -1,8 +1,12 @@
+import { IfxButton, IfxCard, IfxCardHeadline, IfxCardImage, IfxCardLinks,} from '@infineon/infineon-design-system-react';
+
+
 type WeatherProps = {
   temperature: number;
   weather: string;
   location: string;
 };
+
 
 const getWeatherIcon = (weather: string) => {
   const w = weather.toLowerCase();
@@ -14,41 +18,24 @@ const getWeatherIcon = (weather: string) => {
   return '🌤️';
 };
 
-export  const Weather = ({ temperature, weather, location }: WeatherProps) => {
+
+export const Weather = ({ temperature, weather, location }: WeatherProps) => {
   const icon = getWeatherIcon(weather);
 
+
   return (
-    <div className="w-full max-w-sm rounded-2xl border bg-white p-4 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
-
-      <div className="mb-3 flex items-center justify-between">
-        <h2 className="text-sm font-semibold text-neutral-600 dark:text-neutral-400">
-          🌍 Weather
-        </h2>
-        <span className="text-xs text-neutral-400">Live</span>
-      </div>
-
-
-      <div className="mb-2 text-lg font-bold text-neutral-900 dark:text-neutral-100">
-        {location}
-      </div>
-
-
-      <div className="flex items-center gap-4">
-        <div className="text-4xl">{icon}</div>
-
-        <div>
-          <div className="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
-            {temperature}°C
-          </div>
-          <div className="text-sm font-medium text-neutral-600 dark:text-neutral-400">
-            {weather}
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-4 text-xs text-neutral-400">
-        Updated just now
-      </div>
+    <div>
+      <IfxCard direction="vertical" href="" target="_blank" aria-label="Card">
+        <IfxCardImage slot="img" position="" src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Latte_and_dark_coffee.jpg" alt="Coffee"></IfxCardImage>
+            {weather} in {location}
+          <IfxCardHeadline>
+            {temperature}°C {icon}
+            </IfxCardHeadline>
+          <IfxCardLinks slot="buttons">
+              <IfxButton variant="primary">Button</IfxButton>
+              <IfxButton variant="secondary">Button</IfxButton>
+          </IfxCardLinks>
+      </IfxCard>
     </div>
   );
 };
