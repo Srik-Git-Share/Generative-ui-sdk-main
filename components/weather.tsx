@@ -1,8 +1,13 @@
-type WeatherProps = {
+import { IfxButton, IfxCard, IfxCardHeadline, IfxCardImage, IfxCardLinks,IfxCardOverline} from '@infineon/infineon-design-system-react';
+import sunny from '../public/sunny.jpg';
+import Image from 'next/image';
+
+export type WeatherProps = {
   temperature: number;
   weather: string;
   location: string;
 };
+
 
 const getWeatherIcon = (weather: string) => {
   const w = weather.toLowerCase();
@@ -14,41 +19,29 @@ const getWeatherIcon = (weather: string) => {
   return '🌤️';
 };
 
-export  const Weather = ({ temperature, weather, location }: WeatherProps) => {
+
+export const Weather = ({ temperature, weather, location }: WeatherProps) => {
   const icon = getWeatherIcon(weather);
 
+
   return (
-    <div className="w-full max-w-sm rounded-2xl border bg-white p-4 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
-
-      <div className="mb-3 flex items-center justify-between">
-        <h2 className="text-sm font-semibold text-neutral-600 dark:text-neutral-400">
-          🌍 Weather
-        </h2>
-        <span className="text-xs text-neutral-400">Live</span>
-      </div>
-
-
-      <div className="mb-2 text-lg font-bold text-neutral-900 dark:text-neutral-100">
-        {location}
-      </div>
-
-
-      <div className="flex items-center gap-4">
-        <div className="text-4xl">{icon}</div>
-
-        <div>
-          <div className="text-3xl font-bold text-neutral-900 dark:text-neutral-100">
-            {temperature}°C
+    <div className='bg-blue-400'>
+      <IfxCard direction="vertical" href="" target="_blank" aria-label="Card">
+        <div className='items-center my-auto'>
+          <div className='flex flex-col w-full items-center justify-center mb-4'>
+              <Image className='rounded-full' src={sunny} alt="Sunny Weather" width={200} height={200} />
           </div>
-          <div className="text-sm font-medium text-neutral-600 dark:text-neutral-400">
-            {weather}
+          {/* <span></span> */}
+          <div className='flex flex-col items-center justify-center text-center'>
+            <IfxCardOverline>
+              {weather} in {location}
+            </IfxCardOverline>
+            <IfxCardHeadline>
+                {temperature}°C {icon}
+            </IfxCardHeadline>
           </div>
         </div>
-      </div>
-
-      <div className="mt-4 text-xs text-neutral-400">
-        Updated just now
-      </div>
+      </IfxCard>
     </div>
   );
 };
