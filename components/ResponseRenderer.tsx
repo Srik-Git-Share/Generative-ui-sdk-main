@@ -3,6 +3,8 @@ import { TableResponse } from './TableResponse';
 import { CardResponse } from './CardResponse';
 import { WeatherResponse } from './WeatherResponse';
 import { PowerLossWidget } from './PowerLossWidget';
+import PartComparisonTable  from './PartComparisonTable';
+
 
 export const ResponseRenderer = ({ toolResult }: any) => {
   if (!toolResult?.type) return null;
@@ -24,6 +26,9 @@ export const ResponseRenderer = ({ toolResult }: any) => {
 
     case 'powerLossSimulator':
       return <PowerLossWidget data={toolResult} />;
+    
+    case 'partComparison':
+      return <PartComparisonTable message={toolResult} />;
 
     default:
       return null;
