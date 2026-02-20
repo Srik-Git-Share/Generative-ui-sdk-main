@@ -17,6 +17,8 @@ interface PowerLossProps {
 export const PowerLossWidget = ({data}:any) => {
 
     const {productName,rdsOn,eTotal,maxCurrent} = data;
+
+    //console.log('PowerLossWidget received data:', data);
   
   // User Interactive State
   const [frequency, setFrequency] = useState(20); // kHz
