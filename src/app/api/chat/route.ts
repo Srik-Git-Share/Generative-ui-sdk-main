@@ -15,11 +15,9 @@ export async function POST(request: Request) {
       - Do NOT include explanations inside tool arguments.
       - Do NOT include markdown, comments, or text in tool arguments.
       - If structured data is requested, ALWAYS call the correct tool.
-      - NEVER return markdown tables in chat.
-      - For tables, ALWAYS use generateTable with valid JSON arrays.
-      - For charts, ALWAYS use generateChart with valid JSON arrays.
-      - For cards, ALWAYS use generateCard with simple strings.
-      - When the user asks for part/MOSFET/silicon carbide switches recommendations or wants to compare parts/MOSFET/silicon carbide switches ALWAYS use generatePartComparison.
+      - Find the switching loss = generatePowerLossSimulator tool.
+      - when user asks for "Find the switching losses" STRICTLY ALWAYS use generatePowerLossSimulator tool ONLY.
+      - When the user asks for recommendation for switches then ALWAYS call generatePartComparison. 
       - When the user asks Show me the switching losses ALWAYS use generatePowerLossSimulator.
 
       If you cannot format valid JSON, ask for clarification instead of guessing.`,

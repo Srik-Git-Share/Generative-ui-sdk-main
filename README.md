@@ -34,3 +34,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+-I am building an EV charger and need some high-power silicon carbide switches. Can you recommend me some switches?
+
+- Show me the switching losses, I am designing a 3-phase motor drive for an EV. Suggest a CoolSiC MOSFET module that handles 1200V and roughly 50A. 
+
+- - When the user asks for recommendation for part/MOSFET/silicon carbide switches or wants to compare parts/MOSFET/silicon carbide switches ALWAYS use generatePartComparison.
+
+ 
