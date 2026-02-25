@@ -22,7 +22,7 @@ export default function Page() {
     <div className="flex h-screen flex-col bg-neutral-950 text-neutral-100">
       
       <header className="border-b border-neutral-800 bg-neutral-900 px-4 py-3 font-semibold">
-        Generative UI POC
+        The Smart Design Assistant
       </header>
 
       <main className="flex-1 overflow-y-auto px-4 py-6 space-y-4">
